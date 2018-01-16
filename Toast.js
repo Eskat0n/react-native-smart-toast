@@ -5,10 +5,7 @@
  * Copyright (c) 2016 react-native-component <moonsunfall@aliyun.com>
  */
 
-import React, {
-    Component,
-    PropTypes,
-} from 'react'
+import React, { Component,} from 'react'
 import {
     View,
     Text,
@@ -16,7 +13,8 @@ import {
     Animated,
     Easing,
     Dimensions,
-} from 'react-native'
+} from 'react-native';
+import PropTypes from 'prop-types';
 
 import TimerEnhance from 'react-native-smart-timer-enhance'
 import constants, { gravity } from './constants'
@@ -41,27 +39,7 @@ const styles = StyleSheet.create({
 
 class Toast extends Component {
 
-    static constants = constants
-
-    static defaultProps = {
-        spacing: 30,
-        position: gravity.bottom,
-        duration: 3000,
-        animatedDuration: 510,
-        delay: 0,
-        marginTop: 0,
-    }
-
-    static propTypes = {
-        style: View.propTypes.style,
-        textStyle: Text.propTypes.style,
-        spacing: PropTypes.number,
-        position: PropTypes.oneOf([gravity.top, gravity.bottom, gravity.center,]),
-        duration: PropTypes.number,
-        animatedDuration: PropTypes.number,
-        delay: PropTypes.number,
-        marginTop: PropTypes.number,
-    }
+    static constants = constants;
 
     constructor(props) {
         super(props)
@@ -191,5 +169,25 @@ class Toast extends Component {
     }
 
 }
+
+Toast.propTypes = {
+    style: PropTypes.object,
+    textStyle: PropTypes.object,
+    spacing: PropTypes.number,
+    position: PropTypes.oneOf([gravity.top, gravity.bottom, gravity.center,]),
+    duration: PropTypes.number,
+    animatedDuration: PropTypes.number,
+    delay: PropTypes.number,
+    marginTop: PropTypes.number,
+};
+
+Toast.defaultProps = {
+    spacing: 30,
+    position: gravity.bottom,
+    duration: 3000,
+    animatedDuration: 510,
+    delay: 0,
+    marginTop: 0,
+};
 
 export default TimerEnhance(Toast)
